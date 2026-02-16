@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>CodeMirror 6 Single File Example</title>
+    <style>
+      body { margin: 0; font-family: system-ui, sans-serif; }
+      #editor { height: 100vh; }
+	  
+    .div-1 {
+        background-color: #EBEBEB;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="div-1" id="editor"></div>
+
+	<script src="../dist/codemirror-editor-abcjs.js"></script>
+	<script>
+		function onUpdateFunction() {
+		}
+		
+		function onKeyDownFunction() {
+		}
+	
+		let EditorDiv = document.getElementById("editor");
+		
+		let abc = "X:1\n%%MetaComment\n%Comment\nK:C\nabc|def\n\"Am\"a_b'c3/2\n";
+		AbcEditorCreate(EditorDiv, false, onUpdateFunction, onKeyDownFunction);
+		AbcEditorSetText(abc)
+	</script>
+	</body>
+</html>
