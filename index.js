@@ -1,5 +1,6 @@
 import {EditorView        } from "@codemirror/view"
 import {AbcMusicLanguage  } from "codemirror-lang-abcjs"
+import {dumpTree          } from "codemirror-lang-abcjs"
 import {tags              } from "@lezer/highlight"
 import {HighlightStyle    } from "@codemirror/language"
 import {syntaxHighlighting} from "@codemirror/language"
@@ -120,4 +121,9 @@ export function AbcEditorSetSelection(From, To) {
 	g_AbcEditor.dispatch({
 		selection: Selection
 	});
+}
+
+/// Log syntax tree of the ABC in the editor to the console
+export function AbcEditorDumpTree() {
+	dumpTree(AbcEditorGetText());
 }
