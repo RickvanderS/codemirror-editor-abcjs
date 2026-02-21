@@ -34,7 +34,7 @@ export function AbcEditorCreate(ParentElement, DarkMode, onUpdateFunction, onKey
 		{tag: tags.docString  , color: !DarkMode ? "DodgerBlue" : "Cyan"         , fontStyle: "italic"},
 		
 		//Music odd/even
-		{tag: tags.character, color: !DarkMode ? "Indigo"    : "Violet"}, //Odd music dot
+		{tag: tags.character, color: !DarkMode ? "HotPink"    : "Violet"}, //Odd music dot
 		{tag: tags.literal  , color: !DarkMode ? "DarkGreen" : "Lime"  }, //Even music dot
 		
 		//Music other

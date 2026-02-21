@@ -23,7 +23,8 @@ function CreateTestEditor(DarkMode) {
 	+"%%metacomment=1\n"
 	+"|:_A'3/2^b,,/=C''-|\"Am\"a>d|[1abc:|[2def|[\"last time\"\"F\"g|]\n"
 	+"a(abc)[fa'c]|g{abd}!1!d|:|d~|a`b`c\\\n"
-	+"abc[r: Remark]|[M:4/4]avb\n";
+	+"abc[r: Remark]|[M:4/4]avb|(3:a/b/c/|\n"
+	+"Errors should be here!";
 	;
 
 	//Creat the editor and set the test ABC
