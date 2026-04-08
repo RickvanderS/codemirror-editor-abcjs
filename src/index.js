@@ -1,11 +1,15 @@
 import {EditorView        } from "@codemirror/view"
-import {AbcMusicLanguage  } from "codemirror-lang-abcjs"
-import {dumpTree          } from "codemirror-lang-abcjs"
-import {tags              } from "@lezer/highlight"
+import {keymap            } from "@codemirror/view"
+import {lineNumbers       } from "@codemirror/view"
+import {defaultKeymap     } from "@codemirror/commands"
+import {historyKeymap     } from "@codemirror/commands"
+import {history           } from "@codemirror/commands"
+import {EditorSelection   } from "@codemirror/state";
 import {HighlightStyle    } from "@codemirror/language"
 import {syntaxHighlighting} from "@codemirror/language"
-import {EditorSelection   } from "@codemirror/state";
-import {lineNumbers       } from "@codemirror/view"
+import {tags              } from "@lezer/highlight"
+import {AbcMusicLanguage  } from "codemirror-lang-abcjs"
+import {dumpTree          } from "codemirror-lang-abcjs"
 
 /// The global Codemirror editor
 let g_AbcEditor;
@@ -63,13 +67,23 @@ export function AbcEditorCreate(ParentElement, DarkMode, onUpdateFunction, onKey
 	g_AbcEditor = new EditorView({
 		parent: ParentElement,
 		extensions: [
+			//Codemirror extensions
 			lineNumbers(),
+			EditorView.lineWrapping,
+			history(),
+			
+			//Event handlers
+			keymap.of([
+				...defaultKeymap,
+				...historyKeymap,
+			]),
+			EditorView.updateListener.of(onUpdateFunction),
+			domHandlers,
+			
+			//Custom ABC highlighting extensions
 			AbcMusicLanguage,
 			syntaxHighlighting(AbcHighlightStyle),
 			AbcTheme,
-			EditorView.updateListener.of(onUpdateFunction),
-			EditorView.lineWrapping,
-			domHandlers
 		]
 	})
 }
